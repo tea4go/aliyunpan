@@ -4,7 +4,7 @@
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
-//     http://www.apache.org/licenses/LICENSE-2.0
+//	http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
 // distributed under the License is distributed on an "AS IS" BASIS,
@@ -15,9 +15,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/olekukonko/tablewriter"
-	"github.com/tickstep/aliyunpan/cmder"
-	"github.com/tickstep/aliyunpan/cmder/cmdtable"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -29,6 +26,10 @@ import (
 	"strings"
 	"time"
 	"unicode"
+
+	"github.com/olekukonko/tablewriter"
+	"github.com/tickstep/aliyunpan/cmder"
+	"github.com/tickstep/aliyunpan/cmder/cmdtable"
 
 	"github.com/peterh/liner"
 	"github.com/tickstep/aliyunpan/cmder/cmdliner"
@@ -107,7 +108,7 @@ func main() {
 	app := cli.NewApp()
 	cmder.SetApp(app)
 
-	app.Name = "aliyunpan"
+	app.Name = "阿里云盘"
 	app.Version = Version
 	app.Author = "tickstep/aliyunpan: https://github.com/tickstep/aliyunpan"
 	app.Copyright = "(c) 2021-2023 tickstep."
@@ -347,10 +348,10 @@ func main() {
 				wd := "/"
 				if activeUser.IsFileDriveActive() {
 					wd = activeUser.Workdir
-					prompt = app.Name + ":" + converter.ShortDisplay(path.Base(wd), NameShortDisplayNum) + " " + activeUser.Nickname + "$ "
+					prompt = activeUser.Nickname + ":" + converter.ShortDisplay(path.Base(wd), NameShortDisplayNum) + "$ "
 				} else if activeUser.IsAlbumDriveActive() {
 					wd = activeUser.AlbumWorkdir
-					prompt = app.Name + ":" + converter.ShortDisplay(path.Base(wd), NameShortDisplayNum) + " " + activeUser.Nickname + "(相册)$ "
+					prompt = activeUser.Nickname + ":" + converter.ShortDisplay(path.Base(wd), NameShortDisplayNum) + "(相册)$ "
 				}
 
 			} else {
